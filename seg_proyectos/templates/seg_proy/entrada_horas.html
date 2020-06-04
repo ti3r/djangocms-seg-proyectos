@@ -1,0 +1,29 @@
+{% load sekizai_tags %}
+
+{% if user.is_authenticated %}
+<form id="entrada-form" method="post" action="plugin/entrada_de_horas_plugin/crear_entrada_horas/">
+    <div class="form-group">
+    <label for="proyecto" class="form-control">Proyecto:</label>
+    <select id="proyecto" class="form-control" required="required">
+        <option value="">---</option>
+        {% for p in proyectos %}
+            <option value="{{p}}">{{p}}</option>
+        {% endfor %}
+    </select>
+    </div>
+    <div class="form-group">
+        <label for="fecha">Fecha:</label>
+        <input id="fecha" name="fecha" type="date" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="horas" >Horas:</label>
+        <input type="number" name="horas" id="horas" min="0" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input form="entrada-form" type="submit" value="Submit" class="form-control" />
+    </div>
+    {% csrf_token %}
+</form>
+{% else %}
+    Debes de estar autenticado para usar este plugin
+{% endif %}

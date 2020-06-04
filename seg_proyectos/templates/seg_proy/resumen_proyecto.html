@@ -1,0 +1,22 @@
+{% load i18n %}
+<h4>{% blocktrans %}Resumen de proyecto: {{instance.proyecto}}{% endblocktrans %}</h4>
+<table class="table table-striped">
+    <thead>
+        <th>{% blocktrans %}Usuario{% endblocktrans %}</th>
+        <th>{% blocktrans %}Fecha{% endblocktrans %}</th>
+        <th>{% blocktrans %}Horas{% endblocktrans %}</th>
+    </thead>
+    <tbody>
+        {% for hora in horas %}
+            <tr>
+                <td>{{hora.usuario}}</td>
+                <td>{{hora.fecha}}</td>
+                <td>{{hora.horas}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <td>Total: </td>
+        <td colspan="2">{{ total }}</td>
+    </tfoot>
+</table>
