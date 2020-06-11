@@ -105,7 +105,7 @@ class EntradaDeHorasDetallePlugin(CMSPluginBase, ProyectosPluginMixin):
     def obtener_horas_padre(self, usuario, proyecto, detalle):
         fecha = detalle.entrada.date()
         existente = EntradaHoras.objects.filter(usuario=usuario, proyecto=proyecto, fecha=fecha).last()
-        return existente if existente else EntradaHoras(usuario=usuario, proyecto=proyecto, fecha=fecha)
+        return existente if existente else EntradaHoras.objects.create(usuario=usuario, proyecto=proyecto, fecha=fecha)
 
 
 @plugin_pool.register_plugin
