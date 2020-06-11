@@ -1,0 +1,9 @@
+<h1>Lista de Proyectos</h1>
+<ul>
+    {% if not proyectos %}
+    <h4>No existe ningun proyecto activo por el momento</h4>
+    {% endif%}
+    {% for p in proyectos %}
+    <li>{{p}}</li>
+    {% endfor%}
+</ul>
