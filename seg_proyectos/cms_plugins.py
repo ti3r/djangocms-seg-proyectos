@@ -89,7 +89,6 @@ class EntradaDeHorasDetallePlugin(CMSPluginBase, ProyectosPluginMixin):
         return context
 
     def crear_detalle(self, request) -> EntradaHorasDetalle:
-        form = EntradaDeHorasDetalleForm(request.POST)
         ent = datetime.fromisoformat(request.POST.get('entrada'))
         sal = datetime.fromisoformat(request.POST.get('salida'))
         desc = timedelta(hours=float(request.POST.get('descanso'))) if request.POST['descanso'] else timedelta(hours=0)
